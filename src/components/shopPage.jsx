@@ -14,7 +14,7 @@ export default function ShopPage() {
   }, []);
   useEffect(() => {
     if (products) {
-      const timer = setTimeout(() => setIsLoading(false), 110);
+      const timer = setTimeout(() => setIsLoading(false), 0);
       return () => clearTimeout(timer);
     }
   }, [products]);
