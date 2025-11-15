@@ -52,7 +52,7 @@ export default function Home() {
           <div style={styles.imageSection}>
             <div style={styles.imageContainer}>
               <img
-                src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+                src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400"
                 alt="Online Shopping"
                 style={styles.heroImage}
                 onError={(e) => {

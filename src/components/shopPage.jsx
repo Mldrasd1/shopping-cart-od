@@ -2,15 +2,18 @@ import { useEffect, useState } from "react";
 import ProductCard from "./Product Card";
 import { useOutletContext } from "react-router";
 export default function ShopPage() {
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState(null);
   const { setCartItems } = useOutletContext();
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
   useEffect(() => {
     fetch("https://dummyjson.com/products")
       .then((res) => res.json())
       .then((data) => {
         setProducts(data.products);
-      });
+      })
+      .catch((error) => setError(error))
+      .finally(() => setIsLoading(false));
   }, []);
   useEffect(() => {
     if (products) {
@@ -27,6 +30,16 @@ export default function ShopPage() {
       </div>
     );
   }
+  //
+  if (error)
+    return (
+      <>
+        <div style={styles.loadingContainer}>
+          <p></p>
+          <p style={styles.loadingText}>A network error was encountered</p>
+        </div>
+      </>
+    );
   //
   function upgradeCartItems(id, q) {
     if (q < 1) return;
